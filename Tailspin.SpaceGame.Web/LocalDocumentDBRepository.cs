@@ -34,6 +34,7 @@ namespace TailSpin.SpaceGame.Web
         /// The task result contains the retrieved item.
         /// </returns>
         /// <param name="id">The identifier of the item to retrieve.</param>
+       
         public Task<T> GetItemAsync(string id)
         {
             return Task<T>.FromResult(_items.Single(item => item.Id == id));
@@ -61,7 +62,7 @@ namespace TailSpin.SpaceGame.Web
                 .Where(queryPredicate) // filter
                 .OrderByDescending(orderDescendingPredicate) // sort
                 .Skip(page * pageSize) // find page
-                .Take(pageSize - 1) // take items
+                .Take(pageSize ) // take items
                 .AsEnumerable(); // make enumeratable
 
             return Task<IEnumerable<T>>.FromResult(result);
